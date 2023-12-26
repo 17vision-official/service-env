@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  redis:
+    build:
+      context: ./services/redis
+      args:
+        REDIS_IMAGE: redis:${REDIS_VERSION}
+    container_name: redis ${REDIS_VERSION}
+    image: holovision-redis:${REDIS_VERSION}
+
+  mysql: 
+    build:
+      context: ./services/mysql
+      args:
+        MYSQL_IMAGE: mysql:${MYSQL_VERSION}
+    container_name: mysql ${MYSQL_VERSION}
+    image: holovision-mysql:${MYSQL_VERSION}
+
+  php82:
+    build:
+      context: ./services/php82
+      args:
+        PHP_IMAGE: ${PHP82_IMAGE}
+        PHP_EXTENSIONS: redis,gd,exif
+    container_name: php ${PHP82_VERSION}
+    image: holovision-php:${PHP82_VERSION}
+
+  nginx:
+    build:
+      context: ./services/nginx
+      args:
+        NGINX_IMAGE: nginx:${NGINX_VERSION}
+    container_name: nginx ${NGINX_VERSION}
+    image: holovision-nginx:${NGINX_VERSION}
