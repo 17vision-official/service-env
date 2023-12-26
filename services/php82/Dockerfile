@@ -25,7 +25,8 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 RUN docker-php-ext-install mysqli
 
-RUN docker-php-ext-install zip
+# zip 扩展
+RUN atp-get install -y libzip-dev && docker-php-ext-install zip
 
 # redis 扩展
 RUN pecl install redis && docker-php-ext-enable redis
