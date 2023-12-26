@@ -31,9 +31,6 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MANGER_ACCOUNT: ${MANGER_ACCOUNT}
-      MANGER_PHONE: ${MANGER_PHONE}
-    # entrypoint: /docker-mysql/init.sh $MYSQL_USER $MYSQL_PASSWORD $MYSQL_DATABASE $MANGER_ACCOUNT $MANGER_PHONE
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
 
   php82:
