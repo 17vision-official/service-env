@@ -5,3 +5,4 @@ logs
 *.tar
 services
 www
+conf/nginx/ssl
