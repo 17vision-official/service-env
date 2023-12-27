@@ -32,3 +32,11 @@ services:
         NGINX_IMAGE: nginx:${NGINX_VERSION}
     container_name: nginx ${NGINX_VERSION}
     image: holovision-nginx:${NGINX_VERSION}
+
+  node:
+    build:
+      context: ./services/node
+      args:
+        NODE_IMAGE: node:${NODE_VERSION}
+    container_name: node ${NODE_VERSION}
+    image: holovision-node:${NODE_VERSION}
