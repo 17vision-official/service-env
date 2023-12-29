@@ -82,9 +82,12 @@ services:
     image: holovision-skynet:1.7
     container_name: skynet1.7
     restart: always
-    privileged: false
-    working_dir: /services
-    volumes:
-      - ${SKYNET_DIR}:/services
-      - ${LOG_DIR}/skynet:/var/log/skynet
-    entrypoint: /services/entrypoint.sh
+    privileged: true
+    # working_dir: /services
+    # volumes:
+    #   - ${SKYNET_DIR}:/services
+    #   # - ${LOG_DIR}/skynet:/var/log/skynet
+    # ports:
+    #   - 8208:8208
+    #   - 8106:8106
+    # entrypoint: ./entrypoint.sh
