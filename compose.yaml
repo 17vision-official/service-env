@@ -5,7 +5,6 @@ services:
       context: ./services/redis
       args:
         REDIS_IMAGE: redis:${REDIS_VERSION}
-    container_name: redis ${REDIS_VERSION}
     image: holovision-redis:${REDIS_VERSION}
 
   mysql: 
@@ -13,7 +12,6 @@ services:
       context: ./services/mysql
       args:
         MYSQL_IMAGE: mysql:${MYSQL_VERSION}
-    container_name: mysql ${MYSQL_VERSION}
     image: holovision-mysql:${MYSQL_VERSION}
 
   php82:
@@ -22,7 +20,6 @@ services:
       args:
         PHP_IMAGE: ${PHP82_IMAGE}
         PHP_EXTENSIONS: redis,gd,exif
-    container_name: php ${PHP82_VERSION}
     image: holovision-php:${PHP82_VERSION}
 
   nginx:
@@ -30,7 +27,6 @@ services:
       context: ./services/nginx
       args:
         NGINX_IMAGE: nginx:${NGINX_VERSION}
-    container_name: nginx ${NGINX_VERSION}
     image: holovision-nginx:${NGINX_VERSION}
 
   node:
@@ -38,11 +34,9 @@ services:
       context: ./services/node
       args:
         NODE_IMAGE: node:${NODE_VERSION}
-    container_name: node ${NODE_VERSION}
     image: holovision-node:${NODE_VERSION}
 
   skynet: 
     build:
       context: ./services/skynet
-    container_name: skynet 1.7
     image: holovision-skynet:1.7
