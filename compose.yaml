@@ -40,3 +40,9 @@ services:
         NODE_IMAGE: node:${NODE_VERSION}
     container_name: node ${NODE_VERSION}
     image: holovision-node:${NODE_VERSION}
+
+  skynet: 
+    build:
+      context: ./services/skynet
+    container_name: skynet 1.7
+    image: holovision-skynet:1.7
