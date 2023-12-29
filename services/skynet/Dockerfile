@@ -4,8 +4,8 @@ FROM alpine:latest
 RUN apk add --update alpine-sdk
 RUN apk add readline-dev readline autoconf libgcc
 
-# 安装 supervisor
-RUN apk add supervisor
+# 安装 supervisor (并创建文件夹)
+RUN apk add supervisor && mkdir /etc/supervisor.d
 
 # 安装 git
 RUN apk add git
