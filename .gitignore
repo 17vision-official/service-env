@@ -1,5 +1,7 @@
 data
 logs
+skynet
+node
 .DS_Store
 *.sql
 *.tar
