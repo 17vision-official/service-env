@@ -77,3 +77,14 @@ services:
       - ${NODE_DIR}:/app
     ports:
       - "3000:3000"
+
+  skynet:
+    image: holovision-skynet:1.7
+    container_name: skynet1.7
+    restart: always
+    privileged: false
+    working_dir: /services
+    volumes:
+      - ${SKYNET_DIR}:/services
+      - ${LOG_DIR}/skynet:/var/log/skynet
+    entrypoint: /services/entrypoint.sh

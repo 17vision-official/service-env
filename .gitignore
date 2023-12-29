@@ -6,3 +6,8 @@ logs
 services
 www
 conf/nginx/ssl
+
+skynet/nanjing_pro
+skynet/nanjing_dev
+skynet/wujie_pro
+skynet/wujie_dev
