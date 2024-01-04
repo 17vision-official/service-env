@@ -85,4 +85,5 @@ services:
       - ycsjnet
 networks:
   ycsjnet:
+    name: 'ycsjnet'
     driver: bridge
