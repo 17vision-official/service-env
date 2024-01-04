@@ -14,7 +14,8 @@ services:
     environment:
       - TZ:${TZ}
     command: redis-server /etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
-
+    networks: 
+      - ycsjnet
   mysql: 
     image: holovision-mysql:8.2
     container_name: mysql${MYSQL_VERSION}
@@ -27,12 +28,13 @@ services:
       - ${MYSQL_PORT}:3306
     environment:
       TZ: ${TZ}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_DATABASE: '${MYSQL_DATABASE} syncserver'
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
-
+    networks: 
+      - ycsjnet
   php82:
     image: holovision-php:8.2
     container_name: php8.2
@@ -47,7 +49,8 @@ services:
     depends_on:
       - redis
       - mysql
-
+    networks: 
+      - ycsjnet
   nginx:
     image: holovision-nginx:1.25.3
     container_name: nginx${NGINX_VERSION}
@@ -66,7 +69,8 @@ services:
       - TZ:${TZ}
     depends_on:
       - php82
-
+    networks: 
+      - ycsjnet
   node:
     image: holovision-node:20
     container_name: node${NODE_VERSION}
@@ -77,17 +81,8 @@ services:
       - ${NODE_DIR}:/app
     ports:
       - "3000:3000"
-
-  skynet:
-    image: holovision-skynet:1.7
-    container_name: skynet1.7
-    restart: always
-    privileged: true
-    # working_dir: /services
-    # volumes:
-    #   - ${SKYNET_DIR}:/services
-    #   # - ${LOG_DIR}/skynet:/var/log/skynet
-    # ports:
-    #   - 8208:8208
-    #   - 8106:8106
-    # entrypoint: ./entrypoint.sh
+    networks: 
+      - ycsjnet
+networks:
+  ycsjnet:
+    driver: bridge
