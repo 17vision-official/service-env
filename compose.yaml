@@ -71,18 +71,18 @@ services:
       - php82
     networks: 
       - ycsjnet
-  node:
-    image: holovision-node:20
-    container_name: node${NODE_VERSION}
-    restart: always
-    privileged: false
-    working_dir: /app
-    volumes:
-      - ${NODE_DIR}:/app
-    ports:
-      - "3000:3000"
-    networks: 
-      - ycsjnet
+  # node:
+  #   image: holovision-node:20
+  #   container_name: node${NODE_VERSION}
+  #   restart: always
+  #   privileged: false
+  #   working_dir: /app
+  #   volumes:
+  #     - ${NODE_DIR}:/app
+  #   ports:
+  #     - "3000:3000"
+  #   networks: 
+  #     - ycsjnet
 networks:
   ycsjnet:
     name: 'ycsjnet'
