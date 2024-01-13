@@ -35,25 +35,6 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
     networks: 
       - ycsjnet
-  testmysql: 
-    image: holovision-mysql:8.2
-    container_name: testmysql${MYSQL_VERSION}
-    restart: always
-    privileged: false
-    volumes:
-      - ${DATA_DIR}/testmysql${MYSQL_VERSION}:/var/lib/mysql
-      - ./conf/mysql:/docker-mysql
-    ports:
-      - ${MYSQL_PORT}:3306
-    environment:
-      TZ: ${TZ}
-      MYSQL_DATABASE: test_${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
-    networks: 
-      - ycsjnet
   php82:
     image: holovision-php:8.2
     container_name: php8.2
