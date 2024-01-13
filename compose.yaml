@@ -14,8 +14,6 @@ services:
     environment:
       - TZ:${TZ}
     command: redis-server /etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
-    networks: 
-      - ycsjnet
   mysql: 
     image: holovision-mysql:8.2
     container_name: mysql${MYSQL_VERSION}
@@ -33,8 +31,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
-    networks: 
-      - ycsjnet
   php82:
     image: holovision-php:8.2
     container_name: php8.2
@@ -49,8 +45,6 @@ services:
     depends_on:
       - redis
       - mysql
-    networks: 
-      - ycsjnet
   nginx:
     image: holovision-nginx:1.25.3
     container_name: nginx${NGINX_VERSION}
@@ -69,12 +63,3 @@ services:
       - TZ:${TZ}
     depends_on:
       - php82
-    networks: 
-      - ycsjnet
-networks:
-  ycsjnet:
-    name: 'ycsjnet'
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/16
