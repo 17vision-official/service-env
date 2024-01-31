@@ -21,6 +21,8 @@
 
 CREATE DATABASE IF NOT EXISTS fast_php_server CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+USE fast_php_server
+
 DROP TABLE IF EXISTS `failed_jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
