@@ -4,7 +4,10 @@ logs
 *.tar
 services
 www
-conf/nginx/ssl
+conf/nginx/ssl!
+conf/nginx/conf.d
+!conf/nginx/conf.d/php.conf
+
 
 skynet/nanjing_pro
 skynet/nanjing_dev
