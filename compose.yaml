@@ -26,7 +26,7 @@ services:
       - ./conf/mysql:/docker-mysql
       - ./conf/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./logs/mysql:/var/log/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./conf/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - ${MYSQL_PORT}:3306
     environment:
