@@ -26,6 +26,7 @@ services:
       - ./conf/mysql:/docker-mysql
       - ./conf/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./logs/mysql:/var/log/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - ${MYSQL_PORT}:3306
     environment:
@@ -105,4 +106,5 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.85.0.0/16
+        # - subnet: 172.18.0.0/16
