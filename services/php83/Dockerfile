@@ -38,4 +38,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 # RUN curl -o /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar && chmod +x /usr/bin/composer
 # COPY ./www/index.php /www/holovision.com/public/
 
+# 安装最新版本的 composer
+COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+
 WORKDIR /www
