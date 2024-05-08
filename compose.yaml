@@ -19,6 +19,12 @@ services:
         PHP_IMAGE: ${PHP82_IMAGE}
         PHP_EXTENSIONS: redis,gd,exif
     image: holovision-php:${PHP82_VERSION}
+  php83:
+    build:
+      context: ./services/php82
+      args:
+        PHP_IMAGE: ${PHP83_IMAGE}
+    image: holovision-php:${PHP83_VERSION}
   nginx:
     build:
       context: ./services/nginx
