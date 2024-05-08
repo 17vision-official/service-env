@@ -21,7 +21,7 @@ services:
     image: holovision-php:${PHP82_VERSION}
   php83:
     build:
-      context: ./services/php82
+      context: ./services/php83
       args:
         PHP_IMAGE: ${PHP83_IMAGE}
     image: holovision-php:${PHP83_VERSION}
