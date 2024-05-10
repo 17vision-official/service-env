@@ -85,6 +85,7 @@ services:
       - ${NGINX_SSL_CERTIFICATE_DIR}:/etc/nginx/ssl
       - ${LOG_DIR}/nginx${NGINX_VERSION}:/var/log/nginx
       - ${SOURCE_DIR}:/www/
+      - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
     environment:
       - TZ:${TZ}
     depends_on:
