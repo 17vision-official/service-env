@@ -61,6 +61,7 @@ services:
     privileged: true
     volumes:
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
+      - ${YILIAO_ROOT}:/www/yiliao.laravel
       - ${CONF_DIR}/php/php.ini/:/usr/local/etc/php/php.ini
       - ${LOG_DIR}/php83:/var/log/php
     environment:
@@ -86,6 +87,7 @@ services:
       - ${LOG_DIR}/nginx${NGINX_VERSION}:/var/log/nginx
       - ${SOURCE_DIR}:/www/
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
+      - ${YILIAO_ROOT}:/www/yiliao.laravel
     environment:
       - TZ:${TZ}
     depends_on:
