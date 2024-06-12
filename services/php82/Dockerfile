@@ -20,6 +20,9 @@ RUN apt-get install -y libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
     && docker-php-ext-enable imagick
 
+# 安装 cron
+RUN apt-get install -y cron
+
 # mysql 相关扩展
 RUN docker-php-ext-install pdo pdo_mysql
 
