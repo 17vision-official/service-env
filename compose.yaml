@@ -96,18 +96,24 @@ services:
       - php82
     networks: 
       - ycsjnet
-  # node:
-  #   image: holovision-node:20
-  #   container_name: node${NODE_VERSION}
-  #   restart: always
-  #   privileged: false
-  #   working_dir: /app
-  #   volumes:
-  #     - ${NODE_DIR}:/app
-  #   ports:
-  #     - "3000:3000"
-  #   networks: 
-  #     - ycsjnet
+  dss:
+    image: holovision-node:20
+    container_name: node${NODE_VERSION}
+    restart: always
+    privileged: false
+    working_dir: /app/node-dss
+    volumes:
+      - ${NODE_DIR}/node-dss:/app/node-dss
+    entrypoint:
+      [
+        "/bin/bash",
+        "-c",
+        "cd /app/node-dss && export DEBUG=dss* && npm install && npm start",
+      ]
+    ports:
+      - "3000:3000"
+    networks: 
+      - ycsjnet
   meilisearch:
     image: getmeili/meilisearch:latest
     container_name: meilisearch_latest
