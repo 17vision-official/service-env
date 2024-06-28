@@ -37,6 +37,8 @@ RUN pecl install redis && docker-php-ext-enable redis
 # 安装 cron
 RUN apt-get install -y cron
 
+RUN service cron start
+
 # 安装 composer
 # RUN curl -o /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar && chmod +x /usr/bin/composer
 # COPY ./www/index.php /www/holovision.com/public/

@@ -23,6 +23,8 @@ RUN apt-get install -y libmagickwand-dev --no-install-recommends \
 # 安装 cron
 RUN apt-get install -y cron
 
+RUN service cron start
+
 # mysql 相关扩展
 RUN docker-php-ext-install pdo pdo_mysql
 
