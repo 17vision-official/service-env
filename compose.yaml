@@ -96,24 +96,42 @@ services:
       - php82
     networks: 
       - ycsjnet
-  signalserver:
+  awrtc:
     image: holovision-node:20
-    container_name: webrtc-signalserver-1.0
+    container_name: awrtc-1.0
     restart: always
     privileged: false
-    working_dir: /app/signalserver
+    working_dir: /app/awrtc
     volumes:
-      - ${SIGNALSERVER_DIR}:/app/signalserver
+      - ${SIGNALSERVER_DIR}:/app/awrtc
     entrypoint:
       [
         "/bin/bash",
         "-c",
-        "cd /app/signalserver && npm install && export TZ=Asia/Shanghai && npm run serve",
+        "cd /app/awrtc && npm run start",
       ] 
     ports:
-      - ${SIGNALSERVER_PORT}:3600
+      - ${SIGNALSERVER_PORT}:3700
     networks: 
       - ycsjnet
+  # signalserver:
+  #   image: holovision-node:20
+  #   container_name: webrtc-signalserver-1.0
+  #   restart: always
+  #   privileged: false
+  #   working_dir: /app/signalserver
+  #   volumes:
+  #     - ${SIGNALSERVER_DIR}:/app/signalserver
+  #   entrypoint:
+  #     [
+  #       "/bin/bash",
+  #       "-c",
+  #       "cd /app/signalserver && npm install && export TZ=Asia/Shanghai && npm run serve",
+  #     ] 
+  #   ports:
+  #     - ${SIGNALSERVER_PORT}:3600
+  #   networks: 
+  #     - ycsjnet
   # dss:
   #   image: holovision-node:20
   #   container_name: dss
