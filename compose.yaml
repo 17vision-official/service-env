@@ -96,37 +96,55 @@ services:
       - php82
     networks: 
       - ycsjnet
-  dss:
+  signalserver:
     image: holovision-node:20
-    container_name: node${NODE_VERSION}
+    container_name: webrtc-signalserver-1.0
     restart: always
     privileged: false
-    working_dir: /app/node-dss
+    working_dir: /app/signalserver
     volumes:
-      - ${NODE_DIR}/node-dss:/app/node-dss
+      - ${SIGNALSERVER_DIR}:/app/signalserver
     entrypoint:
       [
         "/bin/bash",
         "-c",
-        "cd /app/node-dss && export DEBUG=dss* && npm install && npm start",
-      ]
+        "cd /app/signalserver && npm install && export TZ=Asia/Shanghai && npm run serve",
+      ] 
     ports:
-      - "3000:3000"
+      - ${SIGNALSERVER_PORT}:3600
     networks: 
       - ycsjnet
-  meilisearch:
-    image: getmeili/meilisearch:latest
-    container_name: meilisearch_latest
-    ports:
-      - "7700:7700"
-    environment:
-      - MEILI_MASTER_KEY=masterKey
-      - MEILI_NO_ANALYTICS=true
-    volumes:
-      - ${DATA_DIR}/meilisearch:/var/lib/meilisearch
-    restart: always
-    networks:
-      - ycsjnet
+  # dss:
+  #   image: holovision-node:20
+  #   container_name: dss
+  #   restart: always
+  #   privileged: false
+  #   working_dir: /app/node-dss
+  #   volumes:
+  #     - ${NODE_DIR}/node-dss:/app/node-dss
+  #   entrypoint:
+  #     [
+  #       "/bin/bash",
+  #       "-c",
+  #       "cd /app/node-dss && export DEBUG=dss* && npm install && npm start",
+  #     ]
+  #   ports:
+  #     - "3000:3000"
+  #   networks: 
+  #     - ycsjnet
+  # meilisearch:
+  #   image: getmeili/meilisearch:latest
+  #   container_name: meilisearch_latest
+  #   ports:
+  #     - "7700:7700"
+  #   environment:
+  #     - MEILI_MASTER_KEY=masterKey
+  #     - MEILI_NO_ANALYTICS=true
+  #   volumes:
+  #     - ${DATA_DIR}/meilisearch:/var/lib/meilisearch
+  #   restart: always
+  #   networks:
+  #     - ycsjnet
 networks:
   ycsjnet:
     name: 'ycsjnet'
