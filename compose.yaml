@@ -111,7 +111,7 @@ services:
         "cd /app/awrtc && npm run start",
       ] 
     ports:
-      - ${SIGNALSERVER_PORT}:3700
+      - ${AWRTC_SERVER_PORT}:3700
     networks: 
       - ycsjnet
   # signalserver:
