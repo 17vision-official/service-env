@@ -104,14 +104,9 @@ services:
     working_dir: /app/awrtc
     volumes:
       - ${AWRTC_SERVER_DIR}:/app/awrtc
-    entrypoint:
-      [
-        "/bin/bash",
-        "-c",
-        "cd /app/awrtc && npm run start",
-      ] 
     ports:
       - ${AWRTC_SERVER_PORT}:3700
+    command: npm run start
     networks: 
       - ycsjnet
   # signalserver:
