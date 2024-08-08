@@ -103,7 +103,7 @@ services:
     privileged: false
     working_dir: /app/awrtc
     volumes:
-      - ${SIGNALSERVER_DIR}:/app/awrtc
+      - ${AWRTC_SERVER_DIR}:/app/awrtc
     entrypoint:
       [
         "/bin/bash",
