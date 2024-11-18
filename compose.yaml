@@ -49,6 +49,7 @@ services:
       - ${LOG_DIR}/php82:/var/log/php
     environment:
       - TZ:${TZ}
+    command: /bin/bash -c "service cron start"
     depends_on:
       - redis
       - mysql
@@ -66,6 +67,7 @@ services:
       - ${LOG_DIR}/php83:/var/log/php
     environment:
       - TZ:${TZ}
+    command: /bin/bash -c "service cron start"
     depends_on:
       - redis
       - mysql
