@@ -171,7 +171,7 @@ services:
     privileged: false
     volumes:
       - ${COTURN_CONF_DIR}/turnserver.conf:/etc/turnserver.conf
-      - ${LOG_DIR}/coturn/turnserver.log:/var/log/turnserver.log
+      - ${LOG_DIR}/coturn/turnserver.log:/usr/local/src/log/turnserver.log
     ports:
       - 3478:3478
       - 3478:3478/udp
@@ -179,7 +179,7 @@ services:
       - REALM=coturn
       - USERNAME=ycsj
       - PASSWORD=ycsj-coturn
-    command: ['turnserver', '-c', '/etc/turnserver.conf', '--cli-password=ycsj-coturn']
+    command: ['turnserver', '-c', '/etc/turnserver.conf']
     networks:
       - ycsjnet
 networks:
