@@ -168,15 +168,15 @@ services:
     image: holovision-coturn:1.0
     container_name: coturn-1.0
     restart: always
-    privileged: false
+    privileged: true
     volumes:
       - ${COTURN_CONF_DIR}/turnserver.conf:/etc/turnserver.conf
-      - ${LOG_DIR}/coturn/turnserver.log:/usr/local/src/log/turnserver.log
+      - ${LOG_DIR}/coturn:/var/log
     ports:
       - 3478:3478
       - 3478:3478/udp
     environment:
-      - REALM=coturn
+      - REALM=17vision.com
       - USERNAME=ycsj
       - PASSWORD=ycsj-coturn
     command: ['turnserver', '-c', '/etc/turnserver.conf']
