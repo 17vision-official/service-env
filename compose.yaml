@@ -37,3 +37,7 @@ services:
       args:
         NODE_IMAGE: node:${NODE_VERSION}
     image: holovision-node:${NODE_VERSION}
+  coturn:
+    build:
+      context: './services/coturn'
+    image: holovision-coturn:1.0
