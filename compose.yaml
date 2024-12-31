@@ -179,7 +179,7 @@ services:
       - REALM=coturn
       - USERNAME=ycsj
       - PASSWORD=ycsj-coturn
-    command: ['turnserver', '-c', '/etc/turnserver.conf']
+    command: ['turnserver', '-c', '/etc/turnserver.conf', '--cli-password=ycsj-coturn']
     networks:
       - ycsjnet
 networks:
