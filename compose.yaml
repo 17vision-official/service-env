@@ -164,6 +164,23 @@ services:
   #   restart: always
   #   networks:
   #     - ycsjnet
+  coturn:
+    image: holovision-coturn:1.0
+    container_name: coturn-1.0
+    restart: always
+    privileged: false
+    volumes:
+      - ${COTURN_CONF_DIR}/turnserver.conf:/etc/turnserver.conf
+    ports:
+      - 3478:3478
+      - 3478:3478/udp
+    environment:
+      - REALM=coturn
+      - USERNAME=ycsj
+      - PASSWORD=ycsj-coturn
+    command: ['turnserver', '-c', '/etc/turnserver.conf']
+    networks:
+      - ycsjnet
 networks:
   ycsjnet:
     name: 'ycsjnet'
