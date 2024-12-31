@@ -171,7 +171,7 @@ services:
     privileged: true
     volumes:
       - ${COTURN_CONF_DIR}/turnserver.conf:/etc/turnserver.conf
-      - ${LOG_DIR}/coturn:/var/log
+      - ${LOG_DIR}/coturn/coturn.log:/var/log/turnserver/coturn.log
     ports:
       - 3478:3478
       - 3478:3478/udp
