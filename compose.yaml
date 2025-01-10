@@ -64,6 +64,7 @@ services:
       - ${YILIAO_ROOT}:/www/yiliao.laravel
       - ${CONF_DIR}/php/php.ini/:/usr/local/etc/php/php.ini
       - ${LOG_DIR}/php83:/var/log/php
+      - ${SOURCE_DIR}/source.17vision.com/wgk:/www/yiliao.laravel/public/wgk
     environment:
       - TZ:${TZ}
     # command: /bin/bash -c "service cron start && tail -f /dev/null"
