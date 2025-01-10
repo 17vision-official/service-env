@@ -4,11 +4,13 @@
 echo "REALM: ${REALM}"
 echo "USERNAME: ${USERNAME}"
 echo "PASSWORD: ${PASSWORD}"
+echo "EXTERNAL_IP: ${EXTERNAL_IP}"
 
 # 替换环境变量
 sed -i "s/\$REALM/${REALM}/g" /etc/turnserver.conf
 sed -i "s/\$USERNAME/${USERNAME}/g" /etc/turnserver.conf
 sed -i "s/\$PASSWORD/${PASSWORD}/g" /etc/turnserver.conf
+sed -i "s/\$EXTERNAL_IP/${EXTERNAL_IP}/g" /etc/turnserver.conf
 
 # 启动 turnserver
 exec "$@"

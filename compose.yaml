@@ -181,6 +181,7 @@ services:
       - REALM=${COTURN_REALM}
       - USERNAME=${COTURN_USERNAME}
       - PASSWORD=${COTURN_PASSWORD}
+      - EXTERNAL_IP=${COTURN_EXTERNAL_IP}
     entrypoint: ['/etc/turnserver.sh']
     command: ['turnserver', '-c', '/etc/turnserver.conf']
     networks:
