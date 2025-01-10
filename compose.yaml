@@ -172,14 +172,16 @@ services:
     privileged: true
     volumes:
       - ${COTURN_CONF_DIR}/turnserver.conf:/etc/turnserver.conf
+      - ${COTURN_CONF_DIR}/turnserver.sh:/etc/turnserver.sh
       - ${LOG_DIR}/coturn:/var/log/turnserver
     ports:
       - 3478:3478
       - 3478:3478/udp
     environment:
-      - REALM=17vision.com
-      - USERNAME=ycsj
-      - PASSWORD=ycsj-coturn
+      - REALM=${COTURN_REALM}
+      - USERNAME=${COTURN_USERNAME}
+      - PASSWORD=${COTURN_PASSWORD}
+    entrypoint: ['/etc/turnserver.sh']
     command: ['turnserver', '-c', '/etc/turnserver.conf']
     networks:
       - ycsjnet

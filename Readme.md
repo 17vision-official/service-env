@@ -2,6 +2,10 @@
 
 该配置，仅对 mysql + redis + php + nginx 进行基础的打包。php 镜像 会默认安装 gd、imagick、pdo、pdo_mysql、mysqli、redis、bolt 扩展。php 镜像会安装 composer 工具。
 
+hololens 的 webrtc，单独 docker 运行。对应的 git 是 git@github.com:17vision-official/service-env.git
+
+其他的 webrtc 对应的地址在该环境中。
+
 ### 使用
 
 #### 构建
