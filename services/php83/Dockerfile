@@ -9,11 +9,17 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng-dev \
+        zlib1g-dev \
+        libicu-dev \
     # 安装扩展
     && docker-php-ext-install iconv \
     # 如果安装的扩展需要自定义配置时
     && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd
+
+# 安装 intl
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-install intl
 
 # 安装 imagick 扩展
 RUN apt-get install -y libmagickwand-dev --no-install-recommends \
