@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   redis:
     build:
@@ -37,6 +36,10 @@ services:
       args:
         NODE_IMAGE: node:${NODE_VERSION}
     image: holovision-node:${NODE_VERSION}
+  skynet: 
+    build:
+      context: ./services/skynet
+    image: holovision-skynet:1.7
   coturn:
     build:
       context: './services/coturn'
