@@ -116,6 +116,22 @@ services:
       ] 
     networks: 
       - ycsjnet
+  skynet:
+    image: holovision-skynet:1.7
+    container_name: zhide-skynet-1.7
+    restart: always
+    privileged: false
+    environment:
+      - GATEWAY=7702
+    ports:
+      - 7702:7702
+    volumes:
+      - ${SOURCE_DIR}/skynet-server:/www/zhide-skynet-server
+    command: /skynet/skynet /www/zhide-skynet-server/config/config_node.lua
+    networks:
+      - ycsjnet
+    depends_on:
+      - nginx
   # signalserver:
   #   image: holovision-node:20
   #   container_name: webrtc-signalserver-1.0
