@@ -118,7 +118,7 @@ services:
       - ycsjnet
   skynet:
     image: holovision-skynet:1.7
-    container_name: zhide-skynet-1.7
+    container_name: holovision-skynet-1.7
     restart: always
     privileged: false
     environment:
@@ -126,8 +126,8 @@ services:
     ports:
       - 7702:7702
     volumes:
-      - ${SOURCE_DIR}/skynet-server:/www/zhide-skynet-server
-    command: /skynet/skynet /www/zhide-skynet-server/config/config_node.lua
+      - ${SOURCE_DIR}/holovision.skynet:/www/holovision.skynet
+    command: /skynet/skynet /www/holovision.skynet/config/config_node.lua
     networks:
       - ycsjnet
     depends_on:
