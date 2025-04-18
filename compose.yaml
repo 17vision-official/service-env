@@ -63,6 +63,7 @@ services:
     volumes:
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
       - ${YILIAO_ROOT}:/www/yiliao.laravel
+      - ${MARKET_ROOT}:/www/market.laravel
       - ${CONF_DIR}/php/php.ini/:/usr/local/etc/php/php.ini
       - ${LOG_DIR}/php83:/var/log/php
       - ${SOURCE_DIR}/source.17vision.com/wgk:/www/yiliao.laravel/public/wgk
@@ -94,6 +95,7 @@ services:
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
       - ${YILIAO_ROOT}:/www/yiliao.laravel
       - ${ZHEGNNIAN_ROOT}:/www/zhengnian.laravel
+      - ${MARKET_ROOT}:/www/market.laravel
     environment:
       - TZ:${TZ}
     depends_on:
