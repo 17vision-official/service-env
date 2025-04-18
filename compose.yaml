@@ -92,6 +92,7 @@ services:
       - ${SOURCE_DIR}:/www/
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
       - ${YILIAO_ROOT}:/www/yiliao.laravel
+      - ${ZHEGNNIAN_ROOT}:/www/zhengnian.laravel
     environment:
       - TZ:${TZ}
     depends_on:
@@ -123,6 +124,7 @@ services:
     privileged: false
     environment:
       - GATEWAY=7702
+      - REDIS_CONFIG=redis|holovision2023|6379|10|holovision
     ports:
       - 7702:7702
     volumes:
