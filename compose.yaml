@@ -47,6 +47,7 @@ services:
       - ${SOURCE_DIR}:/www/
       - ${CONF_DIR}/php/php.ini/:/usr/local/etc/php/php.ini
       - ${LOG_DIR}/php82:/var/log/php
+      - ${ZHEGNNIAN_ROOT}:/www/zhengnian.laravel
     environment:
       - TZ:${TZ}
     depends_on:
