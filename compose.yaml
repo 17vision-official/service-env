@@ -77,7 +77,7 @@ services:
     networks: 
       - ycsjnet
   nginx:
-    image: holovision-nginx:1.25.3
+    image: holovision-nginx:1.28.0
     container_name: nginx${NGINX_VERSION}
     restart: always
     privileged: false
