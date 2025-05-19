@@ -11,11 +11,14 @@ RUN apt-get update \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
+        libpq-dev \
     # 安装扩展
     && docker-php-ext-install iconv \
     # 如果安装的扩展需要自定义配置时
     && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd \
+    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-install pgsql
 
 # 安装 intl
 RUN docker-php-ext-configure intl \
@@ -44,6 +47,9 @@ RUN docker-php-ext-install bcmath
 
 # redis 扩展
 RUN pecl install redis && docker-php-ext-enable redis
+
+# 启用OPcache（生产环境推荐）
+RUN docker-php-ext-enable opcache
 
 # 安装 cron
 RUN apt-get install -y cron

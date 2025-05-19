@@ -44,3 +44,15 @@ services:
     build:
       context: './services/coturn'
     image: holovision-coturn:1.0
+  postgreSql:
+    build:
+      context: './services/postgreSql'
+      args:
+        POSTGRESQL_IMAGE: postgres:17
+    image: holovision-postgresql:1.0
+  php84:
+    build:
+      context: ./services/php84
+      args:
+        PHP_IMAGE: ${PHP84_IMAGE}
+    image: holovision-php:${PHP84_VERSION}
