@@ -48,8 +48,8 @@ services:
     build:
       context: './services/postgreSql'
       args:
-        POSTGRESQL_IMAGE: postgres:17
-    image: holovision-postgresql:1.0
+        POSTGRESQL_IMAGE: postgres:17.5
+    image: holovision-postgresql:17.5
   php84:
     build:
       context: ./services/php84
