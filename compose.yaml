@@ -76,6 +76,42 @@ services:
       - mysql
     networks: 
       - ycsjnet
+  php84:
+    image: holovision-php:8.4
+    container_name: php8.4
+    restart: always
+    privileged: true
+    volumes:
+      - ${PHP84_ROOT}:/www/
+      - ${CONF_DIR}/php/php.ini/:/usr/local/etc/php/php.ini
+      - ${LOG_DIR}/php84:/var/log/php
+    environment:
+      - TZ:${TZ}
+    depends_on:
+      - redis
+      - mysql
+      - postgreSql
+    networks: 
+      - ycsjnet
+  postgreSql:
+    image: holovision-postgresql:17.5
+    container_name: pgsql17.5
+    restart: always
+    privileged: false
+    volumes:
+      - ${CONF_DIR}/postgreSql/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ${DATA_DIR}/postgreSql:/var/lib/postgresql/data
+      - ${LOG_DIR}/postgreSql:/var/log/postgresql
+    ports:
+      - ${POSTGRESQL_PORT}:5432
+    environment:
+      TZ: ${TZ}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C.UTF-8"  # 强制UTF-8编码
+    networks:
+      - ycsjnet
   nginx:
     image: holovision-nginx:1.28.0
     container_name: nginx${NGINX_VERSION}
@@ -97,6 +133,7 @@ services:
       - ${YILIAO_ROOT}:/www/yiliao.laravel
       - ${ZHEGNNIAN_ROOT}:/www/zhengnian.laravel
       - ${MARKET_ROOT}:/www/market.laravel
+      - ${PHP84_ROOT}:/www/
     environment:
       - TZ:${TZ}
     depends_on:
