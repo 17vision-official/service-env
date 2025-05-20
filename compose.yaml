@@ -127,6 +127,7 @@ services:
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/
       - ${NGINX_SSL_CERTIFICATE_DIR}:/etc/nginx/ssl
+      - ${NGINX_SSL_CERTIFICATE_LIVE_DIR}:/etc/letsencrypt/live
       - ${LOG_DIR}/nginx${NGINX_VERSION}:/var/log/nginx
       - ${SOURCE_DIR}:/www/
       - ${DABAOENSI_ROOT}:/www/dabaoensi.laravel
