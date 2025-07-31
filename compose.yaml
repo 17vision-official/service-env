@@ -30,6 +30,12 @@ services:
       args:
         NGINX_IMAGE: nginx:${NGINX_VERSION}
     image: holovision-nginx:${NGINX_VERSION}
+  apache:
+    build:
+      context: ./services/apache
+      args:
+        - APACHE_IMAGE=httpd:${HTTPD_VERSION}
+    image: holovision-httpd:${HTTPD_VERSION}
   node:
     build:
       context: ./services/node
