@@ -55,6 +55,6 @@ RUN docker-php-ext-enable bolt
 # 安装 composer
 RUN curl -o /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar && chmod +x /usr/bin/composer
 
-COPY ./www/index.php /www/holovision.com/public/
+# COPY ./www/index.php /www/holovision.com/public/
 
 WORKDIR /www
