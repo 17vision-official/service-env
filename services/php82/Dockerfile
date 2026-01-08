@@ -11,6 +11,9 @@ RUN apt-get update \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
+        libonig-dev \
+        libpq-dev \
+        supervisor \
     # 安装扩展
     && docker-php-ext-install iconv \
     # 如果安装的扩展需要自定义配置时
@@ -37,7 +40,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install mysqli
 
 # zip 扩展
-RUN apt-get install -y libzip-dev && docker-php-ext-install zip
+RUN apt-get install -y libzip-dev && docker-php-ext-install pcntl zip
 
 # 安装 bcmath 扩展
 RUN docker-php-ext-install bcmath
